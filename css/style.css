@@ -1,25 +1,31 @@
-body {
-    font-family: Arial,sans-serif ;
-    background-color: #f0f8ff;
-}
-
-.hero {
-    height: 400px;
-    background-image: url("../assets/background.jpg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    position: relative;
-}
-
-.dashboard {
+.body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
     transition: 0.3s;
 }
 
-.dashboard:hover {
-    transform: scale(1.05);
+.dark-mode {
+    background-color: #121212;
+    color: white;
 }
 
-footer {
-    margin-top: 50px;
+.dark-mode .card {
+    background-color: #1e1e1e;
+    color: white;
+}
+
+.hero-section {
+    height: 350px;
+    background-image: url("../assets/background.jpg");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.card:hover {
+    transform: scale(1.03);
+    transition: 0.3s;
 }
