@@ -96,3 +96,70 @@ transform: scale(1.05);
 margin-top: 50px;
 } Penjelasan:
 Memberikan jarak antara footer dengan konten di atasnya agar tampilan tidak terlalu rapat.
+
+
+login.php
+
+• `session_start();`
+Menjelaskan: Memulai session PHP untuk menyimpan data pengguna secara sementara di server.
+
+• `if (isset($_SESSION['username'])) { header("Location: index.php"); exit(); }`
+Menjelaskan: Jika user sudah login (session ada), langsung arahkan ke halaman index.php agar tidak perlu login lagi.
+
+• `<form method="POST" action="controller/proces_login.php">`
+Menjelaskan: Form login dengan method POST, data dikirim ke file proces_login.php untuk diproses.
+
+• `<input type="text" name="username" value="<?php echo $_COOKIE['username'] ?? ''; ?>"`
+Menjandakan: Input username dengan nilai default dari cookie (jika ada), berguna untuk fitur "Remember Me".
+
+• `<input type="password" name="password">`
+Menjelaskan: Input password yangdisamarkan (dots) untuk keamanan.
+
+• `<input type="checkbox" name="remember">`
+Menjelaskan: Checkbox untuk fitur "Remember Me" agar username tersimpan di cookie.
+
+
+proces_login.php
+
+• `session_start();`
+Menjelaskan: Memulai session untuk menyimpan data login.
+
+• `$username = $_POST['username'] ?? '';`
+Menjelaskan: Mengambil data username dari form, menggunakan operator ?? untuk nilai default kosong jika tidak ada.
+
+• `if ($username === "arya" && $password === "123")`
+Menjelaskan: Validasi login dengan username "arya" dan password "123" (hardcoded untuk testing).
+
+• `$_SESSION['username'] = $username;`
+Menjelaskan: Menyimpan username ke session jika login berhasil.
+
+• `$_SESSION['role'] = "Administrator";`
+Menjelaskan: Menetapkan role Administrator untuk user yang login.
+
+• `if (isset($_POST['remember'])) { setcookie('username', $username, time() + 3600, "/"); }`
+Menjelaskan: Jika checkbox Remember Me dicentang, simpan username ke cookie selama 1 jam (3600 detik).
+
+• `header("Location: ../index.php"); exit();`
+Menjelaskan: Mengarahkan (redirect) ke halaman index.php setelah login berhasil, exit() menghentikan eksekusi kode.
+
+• `else { echo "Login Gagal"; }`
+Menjelaskan: Menampilkan pesan jika username/password salah.
+
+---
+
+logout.php
+• `session_start();`
+Menjelaskan: Memulai session sebelum melakukan logout.
+
+• `session_unset();`
+Menjelaskan: Menghapus semua variabel session tetapi session masih ada.
+
+• `session_destroy();`
+Menjelaskan: Menghapus session secara keseluruhan dari server.
+
+• `setcookie('username', '', time() - 3600, '/');`
+Menjelaskan: Menghapus cookie username dengan waktu kedaluwarsa di masa lalu ( berarti cookie dihapus).
+
+• `header('Location: ../login.php'); exit();`
+Menjelaskan: Mengarahkan kembali ke halaman login setelah logout.
+

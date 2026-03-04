@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,6 +18,15 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
             <a class="navbar-brand" href="#">CIBADUYUT SHOES</a>
+            
+            <?php if (isset($_SESSION['username'])): ?>
+                <span class="navbar-text text-white me-3">
+                    Halo, <strong><?php echo $_SESSION['username']; ?></strong>
+                </span>
+                <a href="controller/logout.php" class="btn btn-danger btn-sm">Logout</a>
+            <?php else: ?>
+                <a href="login.php" class="btn btn-warning btn-sm">Login</a>
+            <?php endif; ?>
 
             <div class="ms-auto">
                 <button class="btn btn-outline-warning btn-sm me-2" data-bs-toggle="modal"
